@@ -2,7 +2,9 @@ import { forwardRef } from "react"; // @emotion
 
 import { css } from "@emotion/css"; // prop-types
 
-import PropTypes from "prop-types"; // images
+import PropTypes from "prop-types"; // image-shimmer
+
+import { Image, Shimmer } from "react-shimmer"; // images
 
 import crash from "./assets/images/crash.webp";
 import { jsx as _jsx } from "react/jsx-runtime";
@@ -14,18 +16,34 @@ const SitoImage = /*#__PURE__*/forwardRef((props, ref) => {
     sx,
     id,
     name,
-    style
+    style,
+    width,
+    height
   } = props;
-  const newSx = css({ ...sx
+  const {
+    widthSx,
+    heightSx
+  } = sx;
+  const newSx = css({ ...sx,
+    img: {
+      width: "100%",
+      height: "100%"
+    }
   });
-  return /*#__PURE__*/_jsx("img", {
+  return /*#__PURE__*/_jsx("div", {
     ref: ref,
     id: id,
     name: name,
-    src: src,
-    alt: alt,
     style: style,
-    className: `${className} ${newSx}`
+    className: `${className} ${newSx}`,
+    children: /*#__PURE__*/_jsx(Image, {
+      src: src,
+      alt: alt,
+      fallback: /*#__PURE__*/_jsx(Shimmer, {
+        width: widthSx || width,
+        height: heightSx || height
+      })
+    })
   });
 });
 SitoImage.defaultProps = {
@@ -36,7 +54,9 @@ SitoImage.defaultProps = {
   src: crash,
   sx: {},
   style: {},
-  extraProps: {}
+  extraProps: {},
+  width: 250,
+  height: 250
 };
 SitoImage.propTypes = {
   id: PropTypes.string,
@@ -44,6 +64,8 @@ SitoImage.propTypes = {
   className: PropTypes.string,
   alt: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
+  width: PropTypes.number,
+  height: PropTypes.number,
 
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
