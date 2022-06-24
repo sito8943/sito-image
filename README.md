@@ -2,10 +2,6 @@
 
 Image with shimmer loader
 
-# sito-image
-
-Image with shimmer loader
-
 ### What is a shimmer?
 
 A powerful, customizable, Suspense-like <img> component that (optionally) simulates a shimmer effect while loading.
