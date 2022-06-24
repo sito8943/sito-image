@@ -11,6 +11,6 @@ const root = ReactDOMClient.createRoot(container);
 // Initial render: Render an element to the root.
 root.render(
   <StrictMode>
-    <SitoImage src="" alt="" />
+    <SitoImage />
   </StrictMode>
 );
