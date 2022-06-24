@@ -9,4 +9,12 @@ const container = document.getElementById("root");
 const root = ReactDOMClient.createRoot(container);
 
 // Initial render: Render an element to the root.
-root.render(<StrictMode></StrictMode>);
+root.render(
+  <StrictMode>
+    <SitoImage
+      sx={{ width: "350px", height: "350px" }}
+      src="https://source.unsplash.com/random/800x600"
+      alt="shimmer-example"
+    />
+  </StrictMode>
+);
