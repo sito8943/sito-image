@@ -1,2 +1,2 @@
 # sito-image
-Image with shimmer loadier
+Image with shimmer loader
