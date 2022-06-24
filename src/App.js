@@ -1,25 +1,75 @@
-import logo from './logo.svg';
-import './App.css';
+import { forwardRef } from "react";
 
-function App() {
+// @emotion
+import { css } from "@emotion/css";
+
+// prop-types
+import PropTypes from "prop-types";
+
+// images
+import crash from "./assets/images/crash.webp";
+
+const SitoImage = forwardRef((props, ref) => {
+  const { src, alt, className, sx, id, name, style } = props;
+
+  const newSx = css({
+    ...sx,
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <img
+      ref={ref}
+      id={id}
+      name={name}
+      src={src}
+      alt={alt}
+      style={style}
+      className={`${className} ${newSx}`}
+    />
   );
-}
+});
 
-export default App;
+SitoImage.defaultProps = {
+  id: "",
+  name: "",
+  className: "",
+  alt: "no-image",
+  src: crash,
+  sx: {},
+  style: {},
+  extraProps: {},
+};
+
+SitoImage.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  className: PropTypes.string,
+  alt: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */
+  sx: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
+  style: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
+  extraProps: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
+};
+
+export default SitoImage;
