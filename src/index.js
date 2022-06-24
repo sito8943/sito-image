@@ -9,8 +9,4 @@ const container = document.getElementById("root");
 const root = ReactDOMClient.createRoot(container);
 
 // Initial render: Render an element to the root.
-root.render(
-  <StrictMode>
-    <SitoImage />
-  </StrictMode>
-);
+root.render(<StrictMode></StrictMode>);
