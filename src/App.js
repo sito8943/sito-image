@@ -22,6 +22,8 @@ const SitoImage = forwardRef((props, ref) => {
     img: {
       width: "100%",
       height: "100%",
+      filter: sx.filter || "inherit",
+      borderRadius: sx.borderRadius || "inherit",
       objectFit: sx.objectFit || "inherit",
       objectPosition: sx.objectPosition || "inherit",
     },
