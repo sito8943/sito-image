@@ -27,7 +27,9 @@ const SitoImage = /*#__PURE__*/forwardRef((props, ref) => {
   const newSx = css({ ...sx,
     img: {
       width: "100%",
-      height: "100%"
+      height: "100%",
+      objectFit: sx.objectFit || "inherit",
+      objectPosition: sx.objectPosition || "inherit"
     }
   });
   return /*#__PURE__*/_jsx("div", {
