@@ -8,44 +8,34 @@ import { Image, Shimmer } from "react-shimmer"; // images
 
 import crash from "./assets/images/crash.webp";
 import { jsx as _jsx } from "react/jsx-runtime";
-const SitoImage = /*#__PURE__*/forwardRef((props, ref) => {
-  const {
-    src,
-    alt,
-    className,
-    sx,
-    id,
-    name,
-    style,
-    width,
-    height
-  } = props;
-  const {
-    widthSx,
-    heightSx
-  } = sx;
-  const newSx = css({ ...sx,
+const SitoImage = /*#__PURE__*/ forwardRef((props, ref) => {
+  const { src, alt, className, sx, id, name, style, width, height } = props;
+  const { widthSx, heightSx } = sx;
+  const newSx = css({
+    ...sx,
     img: {
       width: "100%",
       height: "100%",
+      filter: sx.filter || "inherit",
+      borderRadius: sx.borderRadius || "inherit",
       objectFit: sx.objectFit || "inherit",
-      objectPosition: sx.objectPosition || "inherit"
-    }
+      objectPosition: sx.objectPosition || "inherit",
+    },
   });
-  return /*#__PURE__*/_jsx("div", {
+  return /*#__PURE__*/ _jsx("div", {
     ref: ref,
     id: id,
     name: name,
     style: style,
     className: `${className} ${newSx}`,
-    children: /*#__PURE__*/_jsx(Image, {
+    children: /*#__PURE__*/ _jsx(Image, {
       src: src,
       alt: alt,
-      fallback: /*#__PURE__*/_jsx(Shimmer, {
+      fallback: /*#__PURE__*/ _jsx(Shimmer, {
         width: widthSx || width,
-        height: heightSx || height
-      })
-    })
+        height: heightSx || height,
+      }),
+    }),
   });
 });
 SitoImage.defaultProps = {
@@ -58,7 +48,7 @@ SitoImage.defaultProps = {
   style: {},
   extraProps: {},
   width: 250,
-  height: 250
+  height: 250,
 };
 SitoImage.propTypes = {
   id: PropTypes.string,
@@ -72,8 +62,26 @@ SitoImage.propTypes = {
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
-  sx: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object]),
-  style: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object]),
-  extraProps: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object])
+  sx: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
+  style: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
+  extraProps: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
 };
 export default SitoImage;
