@@ -13,30 +13,24 @@ import { Image, Shimmer } from "react-shimmer";
 import crash from "./assets/images/crash.webp";
 
 const SitoImage = forwardRef((props, ref) => {
-  const { src, alt, className, sx, id, name, style, width, height } = props;
+  const { src, alt, sx, id, name, style, width, height } = props;
 
   const { widthSx, heightSx } = sx;
 
   const newSx = css({
-    ...sx,
     img: {
-      width: "100%",
-      height: "100%",
-      filter: sx.filter || "inherit",
-      borderRadius: sx.borderRadius || "inherit",
-      objectFit: sx.objectFit || "inherit",
-      objectPosition: sx.objectPosition || "inherit",
+      width,
+      height,
+      filter: sx.filter,
+      borderRadius: sx.borderRadius,
+      objectFit: sx.objectFit,
+      objectPosition: sx.objectPosition,
+      ...sx,
     },
   });
 
   return (
-    <div
-      ref={ref}
-      id={id}
-      name={name}
-      style={style}
-      className={`${className} ${newSx}`}
-    >
+    <div ref={ref} id={id} name={name} style={style} className={newSx}>
       <Image
         src={src}
         alt={alt}
@@ -51,7 +45,6 @@ const SitoImage = forwardRef((props, ref) => {
 SitoImage.defaultProps = {
   id: "",
   name: "",
-  className: "",
   alt: "no-image",
   src: crash,
   sx: {},
@@ -64,7 +57,6 @@ SitoImage.defaultProps = {
 SitoImage.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
-  className: PropTypes.string,
   alt: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   width: PropTypes.number,

@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import { StrictMode } from "react";
 import * as ReactDOMClient from "react-dom/client";
 
@@ -12,6 +13,7 @@ const root = ReactDOMClient.createRoot(container);
 root.render(
   <StrictMode>
     <SitoImage
+      className={css({ borderRadius: "100%" })}
       sx={{ width: "350px", height: "350px" }}
       src="https://source.unsplash.com/random/800x600"
       alt="shimmer-example"
