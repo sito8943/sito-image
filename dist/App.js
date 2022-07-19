@@ -12,6 +12,8 @@ const SitoImage = /*#__PURE__*/ forwardRef((props, ref) => {
   const { src, alt, sx, id, name, style, width, height } = props;
   const { widthSx, heightSx } = sx;
   const newSx = css({
+    width: "100%",
+    height: "100%",
     img: {
       width,
       height,
