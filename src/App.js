@@ -18,6 +18,12 @@ const SitoImage = forwardRef((props, ref) => {
   const { widthSx, heightSx } = sx;
 
   const newSx = css({
+    width: "100%",
+    height: "100%",
+    "&.shimmer": {
+      width,
+      height,
+    },
     img: {
       width,
       height,
