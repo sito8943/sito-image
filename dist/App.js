@@ -10,13 +10,16 @@ import crash from "./assets/images/crash.webp";
 import { jsx as _jsx } from "react/jsx-runtime";
 const SitoImage = /*#__PURE__*/ forwardRef((props, ref) => {
   const { src, alt, sx, id, name, style, width, height } = props;
-  const { widthSx, heightSx } = sx;
   const newSx = css({
     width: "100%",
     height: "100%",
+    div: {
+      width: sx.width ? sx.width : width,
+      height: sx.height ? sx.height : height,
+    },
     img: {
-      width,
-      height,
+      width: sx.width ? sx.width : width,
+      height: sx.height ? sx.height : height,
       filter: sx.filter,
       borderRadius: sx.borderRadius,
       objectFit: sx.objectFit,
@@ -34,8 +37,10 @@ const SitoImage = /*#__PURE__*/ forwardRef((props, ref) => {
       src: src,
       alt: alt,
       fallback: /*#__PURE__*/ _jsx(Shimmer, {
-        width: widthSx || width,
-        height: heightSx || height,
+        className: css({
+          width: `${sx.width ? sx.width : width} !important`,
+          height: `${sx.height ? sx.height : height} !important`,
+        }),
       }),
     }),
   });
@@ -48,8 +53,8 @@ SitoImage.defaultProps = {
   sx: {},
   style: {},
   extraProps: {},
-  width: 250,
-  height: 250,
+  width: undefined,
+  height: undefined,
 };
 SitoImage.propTypes = {
   id: PropTypes.string,
