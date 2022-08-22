@@ -11,8 +11,8 @@ import { jsx as _jsx } from "react/jsx-runtime";
 const SitoImage = /*#__PURE__*/ forwardRef((props, ref) => {
   const { src, alt, sx, id, name, style, width, height } = props;
   const newSx = css({
-    width: "100%",
-    height: "100%",
+    width: sx.width ? sx.width : width,
+    height: sx.width ? sx.width : width,
     div: {
       width: sx.width ? sx.width : width,
       height: sx.height ? sx.height : height,
@@ -53,8 +53,8 @@ SitoImage.defaultProps = {
   sx: {},
   style: {},
   extraProps: {},
-  width: undefined,
-  height: undefined,
+  width: "100%",
+  height: "100%",
 };
 SitoImage.propTypes = {
   id: PropTypes.string,
