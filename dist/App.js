@@ -13,7 +13,6 @@ import crash from "./assets/images/crash.webp";
 
 const SitoImage = forwardRef((props, ref) => {
   const { src, alt, sx, id, name, style, width, height } = props;
-
   const newSx = css({
     width: sx.width ? sx.width : width,
     height: sx.width ? sx.width : width,
@@ -31,25 +30,22 @@ const SitoImage = forwardRef((props, ref) => {
       ...sx,
     },
   });
-
-  return (
-    <div ref={ref} id={id} name={name} style={style} className={newSx}>
-      <Image
-        src={src}
-        alt={alt}
-        fallback={
-          <Shimmer
-            className={css({
-              width: `${sx.width ? sx.width : width} !important`,
-              height: `${sx.height ? sx.height : height} !important`,
-            })}
-          />
-        }
-      />
-    </div>
-  );
+  return /*#__PURE__*/ _jsx("div", {
+    ref: ref,
+    id: id,
+    name: name,
+    style: style,
+    className: newSx,
+    children: /*#__PURE__*/ _jsx(Image, {
+      src: src,
+      alt: alt,
+      fallback: /*#__PURE__*/ _jsx(Shimmer, {
+        width: widthSx || width,
+        height: heightSx || height,
+      }),
+    }),
+  });
 });
-
 SitoImage.defaultProps = {
   id: "",
   name: "",
