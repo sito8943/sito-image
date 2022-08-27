@@ -2,19 +2,28 @@ import { forwardRef } from "react"; // @emotion
 
 import { css } from "@emotion/css"; // prop-types
 
-import PropTypes from "prop-types"; // image-shimmer
+// prop-types
+import PropTypes from "prop-types";
 
-import { Image, Shimmer } from "react-shimmer"; // images
+// image-shimmer
+import { Image, Shimmer } from "react-shimmer";
 
+// images
 import crash from "./assets/images/crash.webp";
-import { jsx as _jsx } from "react/jsx-runtime";
-const SitoImage = /*#__PURE__*/ forwardRef((props, ref) => {
+
+const SitoImage = forwardRef((props, ref) => {
   const { src, alt, sx, id, name, style, width, height } = props;
-  const { widthSx, heightSx } = sx;
+
   const newSx = css({
+    width: sx.width ? sx.width : width,
+    height: sx.width ? sx.width : width,
+    div: {
+      width: sx.width ? sx.width : width,
+      height: sx.height ? sx.height : height,
+    },
     img: {
-      width,
-      height,
+      width: sx.width ? sx.width : width,
+      height: sx.height ? sx.height : height,
       filter: sx.filter,
       borderRadius: sx.borderRadius,
       objectFit: sx.objectFit,
@@ -22,22 +31,25 @@ const SitoImage = /*#__PURE__*/ forwardRef((props, ref) => {
       ...sx,
     },
   });
-  return /*#__PURE__*/ _jsx("div", {
-    ref: ref,
-    id: id,
-    name: name,
-    style: style,
-    className: newSx,
-    children: /*#__PURE__*/ _jsx(Image, {
-      src: src,
-      alt: alt,
-      fallback: /*#__PURE__*/ _jsx(Shimmer, {
-        width: widthSx || width,
-        height: heightSx || height,
-      }),
-    }),
-  });
+
+  return (
+    <div ref={ref} id={id} name={name} style={style} className={newSx}>
+      <Image
+        src={src}
+        alt={alt}
+        fallback={
+          <Shimmer
+            className={css({
+              width: `${sx.width ? sx.width : width} !important`,
+              height: `${sx.height ? sx.height : height} !important`,
+            })}
+          />
+        }
+      />
+    </div>
+  );
 });
+
 SitoImage.defaultProps = {
   id: "",
   name: "",
@@ -46,8 +58,8 @@ SitoImage.defaultProps = {
   sx: {},
   style: {},
   extraProps: {},
-  width: 250,
-  height: 250,
+  width: "100%",
+  height: "100%",
 };
 SitoImage.propTypes = {
   id: PropTypes.string,
@@ -56,7 +68,6 @@ SitoImage.propTypes = {
   src: PropTypes.string.isRequired,
   width: PropTypes.number,
   height: PropTypes.number,
-
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
