@@ -2,16 +2,13 @@ import { forwardRef } from "react"; // @emotion
 
 import { css } from "@emotion/css"; // prop-types
 
-// prop-types
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"; // image-shimmer
 
-// image-shimmer
-import { Image, Shimmer } from "react-shimmer";
+import { Image, Shimmer } from "react-shimmer"; // images
 
-// images
 import crash from "./assets/images/crash.webp";
-
-const SitoImage = forwardRef((props, ref) => {
+import { jsx as _jsx } from "react/jsx-runtime";
+const SitoImage = /*#__PURE__*/ forwardRef((props, ref) => {
   const { src, alt, sx, id, name, style, width, height } = props;
   const newSx = css({
     width: sx.width ? sx.width : width,
@@ -40,8 +37,12 @@ const SitoImage = forwardRef((props, ref) => {
       src: src,
       alt: alt,
       fallback: /*#__PURE__*/ _jsx(Shimmer, {
-        width: widthSx || width,
-        height: heightSx || height,
+        width: 100,
+        height: 100,
+        className: css({
+          width: `${sx.width ? sx.width : width} !important`,
+          height: `${sx.height ? sx.height : height} !important`,
+        }),
       }),
     }),
   });
@@ -64,6 +65,7 @@ SitoImage.propTypes = {
   src: PropTypes.string.isRequired,
   width: PropTypes.number,
   height: PropTypes.number,
+
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
