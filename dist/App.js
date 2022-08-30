@@ -37,8 +37,8 @@ const SitoImage = /*#__PURE__*/ forwardRef((props, ref) => {
       src: src,
       alt: alt,
       fallback: /*#__PURE__*/ _jsx(Shimmer, {
-        width: 100,
-        height: 100,
+        width: sx.width ? sx.width : width,
+        height: sx.width ? sx.width : width,
         className: css({
           width: `${sx.width ? sx.width : width} !important`,
           height: `${sx.height ? sx.height : height} !important`,
