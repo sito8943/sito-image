@@ -40,8 +40,8 @@ const SitoImage = forwardRef((props, ref) => {
         alt={alt}
         fallback={
           <Shimmer
-            width={100}
-            height={100}
+            width={sx.width ? sx.width : width}
+            height={sx.width ? sx.width : width}
             className={css({
               width: `${sx.width ? sx.width : width} !important`,
               height: `${sx.height ? sx.height : height} !important`,
