@@ -12,7 +12,7 @@ const SitoImage = /*#__PURE__*/ forwardRef((props, ref) => {
   const { src, alt, sx, id, name, style, width, height } = props;
   const newSx = css({
     width: sx.width ? sx.width : width,
-    height: sx.height ? sx.height : height,
+    height: sx.width ? sx.width : width,
     div: {
       width: sx.width ? sx.width : width,
       height: sx.height ? sx.height : height,
@@ -38,7 +38,7 @@ const SitoImage = /*#__PURE__*/ forwardRef((props, ref) => {
       alt: alt,
       fallback: /*#__PURE__*/ _jsx(Shimmer, {
         width: sx.width ? sx.width : width,
-        height: sx.height ? sx.height : height,
+        height: sx.width ? sx.width : width,
         className: css({
           width: `${sx.width ? sx.width : width} !important`,
           height: `${sx.height ? sx.height : height} !important`,
