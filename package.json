@@ -2,7 +2,7 @@
   "name": "sito-image",
   "description": "Image with shimmer loader",
   "main": "dist/App.js",
-  "version": "0.8.4",
+  "version": "0.9.1",
   "private": false,
   "license": "MIT",
   "author": "SitoNimbus",
@@ -11,7 +11,7 @@
     "@emotion/css": "^11.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

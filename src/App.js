@@ -40,7 +40,9 @@ const SitoImage = forwardRef((props, ref) => {
 
   return (
     <div ref={ref} id={id} name={name} style={style} className={newSx}>
-      <div className={{ position: "relative", width: "100%", height: "100%" }}>
+      <div
+        className={css({ position: "relative", width: "100%", height: "100%" })}
+      >
         <img
           className={newSx}
           src={src}
