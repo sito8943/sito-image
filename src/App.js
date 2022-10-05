@@ -54,35 +54,32 @@ const SitoImage = forwardRef((props, ref) => {
           }}
           onError={() => setLoading(-1)}
         />
-      </div>
-      <div
-        className={css({
-          zIndex: loading === 1 ? 1 : -1,
-          position: "relative",
-          top: 0,
-          left: 0,
-          width: `${parseImageDimension(sx.width ? sx.width : "100%")}`,
-          height: `${parseImageDimension(sx.height ? sx.height : "100%")}`,
-          opacity: loading === 1 ? 1 : 0,
-        })}
-      >
-        {!loadingComponent ? (
-          <div
-            className={`shimmer ${css({
-              zIndex: loading === 1 ? 1 : -1,
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: `${parseImageDimension(sx.width ? sx.width : "100%")}`,
-              height: `${parseImageDimension(sx.height ? sx.height : "100%")}`,
-              transition: "all 500ms ease",
-              opacity: loading === 1 ? 1 : 0,
-            })}`}
-          />
-        ) : (
-          loadingComponent
-        )}
-        {loading === -1 && errorComponent}
+        <div
+          className={css({
+            zIndex: loading === 1 ? 1 : -1,
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: `${parseImageDimension(sx.width ? sx.width : "100%")}`,
+            height: `${parseImageDimension(sx.height ? sx.height : "100%")}`,
+            transition: "all 500ms ease",
+            opacity: loading === 1 ? 1 : 0,
+          })}
+        >
+          {!loadingComponent ? (
+            <div
+              className={`shimmer ${css({
+                width: `${parseImageDimension(sx.width ? sx.width : "100%")}`,
+                height: `${parseImageDimension(
+                  sx.height ? sx.height : "100%"
+                )}`,
+              })}`}
+            />
+          ) : (
+            loadingComponent
+          )}
+          {loading === -1 && errorComponent}
+        </div>
       </div>
     </div>
   );
