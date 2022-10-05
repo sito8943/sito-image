@@ -1,4 +1,3 @@
-import { css } from "@emotion/react";
 import { StrictMode } from "react";
 import * as ReactDOMClient from "react-dom/client";
 
@@ -13,9 +12,11 @@ const root = ReactDOMClient.createRoot(container);
 root.render(
   <StrictMode>
     <SitoImage
+      id="1"
       sx={{ width: "250px", height: "250px" }}
       src="https://source.unsplash.com/random/800x600"
       alt="shimmer-example"
+      loadingComponent={<div>Hola</div>}
     />
   </StrictMode>
 );
