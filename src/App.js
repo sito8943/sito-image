@@ -12,18 +12,8 @@ import "./style.css";
 const SitoImage = forwardRef((props, ref) => {
   const [loading, setLoading] = useState(1);
 
-  const {
-    src,
-    errorComponent,
-    loadingComponent,
-    alt,
-    sx,
-    id,
-    name,
-    style,
-    width,
-    height,
-  } = props;
+  const { src, errorComponent, loadingComponent, alt, sx, id, name, style } =
+    props;
 
   const isPercent = (dimension) => dimension.indexOf("%") >= 0;
 
@@ -33,16 +23,16 @@ const SitoImage = forwardRef((props, ref) => {
   };
 
   const newSx = css({
-    width: sx.width ? sx.width : width,
-    height: sx.width ? sx.width : width,
+    width: sx.width ? sx.width : "100%",
+    height: sx.width ? sx.width : "100%",
     img: {
       filter: sx.filter,
       borderRadius: sx.borderRadius,
       objectFit: sx.objectFit,
       objectPosition: sx.objectPosition,
       ...sx,
-      width: `${parseImageDimension(sx.width ? sx.width : width)}`,
-      height: `${parseImageDimension(sx.height ? sx.height : height)}`,
+      width: `${parseImageDimension(sx.width ? sx.width : "100%")}`,
+      height: `${parseImageDimension(sx.height ? sx.height : "100%")}`,
       opacity: 0,
       transition: "opacity 200ms ease",
     },
@@ -60,7 +50,7 @@ const SitoImage = forwardRef((props, ref) => {
             setLoading(0);
             e.target.style.opacity = 1;
           }}
-          onError={(e) => setLoading(-1)}
+          onError={() => setLoading(-1)}
         />
       </div>
       <div
@@ -69,8 +59,8 @@ const SitoImage = forwardRef((props, ref) => {
           position: "relative",
           top: 0,
           left: 0,
-          width: `${parseImageDimension(sx.width ? sx.width : width)}`,
-          height: `${parseImageDimension(sx.height ? sx.height : height)}`,
+          width: `${parseImageDimension(sx.width ? sx.width : "100%")}`,
+          height: `${parseImageDimension(sx.height ? sx.height : "100%")}`,
           opacity: loading === 1 ? 1 : 0,
         })}
       >
@@ -81,8 +71,8 @@ const SitoImage = forwardRef((props, ref) => {
               position: "absolute",
               top: 0,
               left: 0,
-              width: `${parseImageDimension(sx.width ? sx.width : width)}`,
-              height: `${parseImageDimension(sx.height ? sx.height : height)}`,
+              width: `${parseImageDimension(sx.width ? sx.width : "100%")}`,
+              height: `${parseImageDimension(sx.height ? sx.height : "100%")}`,
               transition: "all 500ms ease",
               opacity: loading === 1 ? 1 : 0,
             })}`}
@@ -106,8 +96,6 @@ SitoImage.defaultProps = {
   sx: {},
   style: {},
   extraProps: {},
-  width: "100%",
-  height: "100%",
 };
 
 SitoImage.propTypes = {
@@ -117,8 +105,6 @@ SitoImage.propTypes = {
   src: PropTypes.string.isRequired,
   errorComponent: PropTypes.node,
   loadingComponent: PropTypes.node,
-  width: PropTypes.number,
-  height: PropTypes.number,
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */

@@ -10,7 +10,15 @@
   "comments": false,
   "env": {
     "minify": {
-      "presets": ["@babel/preset-react", ["babel-preset-minify"]]
+      "presets": [
+        [
+          "@babel/preset-react",
+          {
+            "runtime": "automatic"
+          }
+        ],
+        ["babel-preset-minify"]
+      ]
     }
   }
 }

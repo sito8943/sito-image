@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import * as ReactDOMClient from "react-dom/client";
 
-import SitoImage from "./App";
+import SitoImage from "sito-image";
 
 const container = document.getElementById("root");
 
