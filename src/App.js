@@ -66,7 +66,7 @@ const SitoImage = forwardRef((props, ref) => {
       <div
         className={css({
           zIndex: loading === 1 ? 1 : -1,
-          position: "absolute",
+          position: "relative",
           top: 0,
           left: 0,
           width: `${parseImageDimension(sx.width ? sx.width : width)}`,

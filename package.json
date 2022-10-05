@@ -2,7 +2,7 @@
   "name": "sito-image",
   "description": "Image with shimmer loader",
   "main": "dist/App.js",
-  "version": "0.5.4",
+  "version": "0.6.1",
   "private": false,
   "license": "MIT",
   "author": "SitoNimbus",
