@@ -7,7 +7,7 @@ import PropTypes from "prop-types"; // style
 import "./style.css";
 import { jsx as _jsx } from "react/jsx-runtime";
 import { jsxs as _jsxs } from "react/jsx-runtime";
-const SitoImage = /*#__PURE__*/forwardRef((props, ref) => {
+const SitoImage = /*#__PURE__*/ forwardRef((props, ref) => {
   const [loading, setLoading] = useState(1);
   const {
     src,
@@ -19,12 +19,12 @@ const SitoImage = /*#__PURE__*/forwardRef((props, ref) => {
     name,
     style,
     width,
-    height
+    height,
   } = props;
 
-  const isPercent = dimension => dimension.indexOf("%") >= 0;
+  const isPercent = (dimension) => dimension.indexOf("%") >= 0;
 
-  const parseImageDimension = dimension => {
+  const parseImageDimension = (dimension) => {
     if (isPercent(dimension)) return "100%";
     return dimension;
   };
@@ -41,55 +41,65 @@ const SitoImage = /*#__PURE__*/forwardRef((props, ref) => {
       width: `${parseImageDimension(sx.width ? sx.width : width)}`,
       height: `${parseImageDimension(sx.height ? sx.height : height)}`,
       opacity: 0,
-      transition: "opacity 200ms ease"
-    }
+      transition: "opacity 200ms ease",
+    },
   });
-  return /*#__PURE__*/_jsxs("div", {
+  return /*#__PURE__*/ _jsxs("div", {
     ref: ref,
     id: id,
     name: name,
     style: style,
     className: newSx,
-    children: [/*#__PURE__*/_jsx("div", {
-      className: {
-        position: "relative",
-        width: "100%",
-        height: "100%"
-      },
-      children: /*#__PURE__*/_jsx("img", {
-        className: newSx,
-        src: src,
-        alt: alt,
-        loading: "lazy",
-        onLoad: e => {
-          setLoading(0);
-          e.target.style.opacity = 1;
+    children: [
+      /*#__PURE__*/ _jsx("div", {
+        className: {
+          position: "relative",
+          width: "100%",
+          height: "100%",
         },
-        onError: e => setLoading(-1)
-      })
-    }), /*#__PURE__*/_jsxs("div", {
-      className: css({
-        zIndex: loading === 1 ? 1 : -1,
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: `${parseImageDimension(sx.width ? sx.width : width)}`,
-        height: `${parseImageDimension(sx.height ? sx.height : height)}`,
-        opacity: loading === 1 ? 1 : 0
+        children: /*#__PURE__*/ _jsx("img", {
+          className: newSx,
+          src: src,
+          alt: alt,
+          loading: "lazy",
+          onLoad: (e) => {
+            setLoading(0);
+            e.target.style.opacity = 1;
+          },
+          onError: (e) => setLoading(-1),
+        }),
       }),
-      children: [!loadingComponent ? /*#__PURE__*/_jsx("div", {
-        className: `shimmer ${css({
+      /*#__PURE__*/ _jsxs("div", {
+        className: css({
           zIndex: loading === 1 ? 1 : -1,
-          position: "absolute",
+          position: "relative",
           top: 0,
           left: 0,
           width: `${parseImageDimension(sx.width ? sx.width : width)}`,
           height: `${parseImageDimension(sx.height ? sx.height : height)}`,
-          transition: "all 500ms ease",
-          opacity: loading === 1 ? 1 : 0
-        })}`
-      }) : loadingComponent, loading === -1 && errorComponent]
-    })]
+          opacity: loading === 1 ? 1 : 0,
+        }),
+        children: [
+          !loadingComponent
+            ? /*#__PURE__*/ _jsx("div", {
+                className: `shimmer ${css({
+                  zIndex: loading === 1 ? 1 : -1,
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: `${parseImageDimension(sx.width ? sx.width : width)}`,
+                  height: `${parseImageDimension(
+                    sx.height ? sx.height : height
+                  )}`,
+                  transition: "all 500ms ease",
+                  opacity: loading === 1 ? 1 : 0,
+                })}`,
+              })
+            : loadingComponent,
+          loading === -1 && errorComponent,
+        ],
+      }),
+    ],
   });
 });
 SitoImage.defaultProps = {
@@ -103,7 +113,7 @@ SitoImage.defaultProps = {
   style: {},
   extraProps: {},
   width: "100%",
-  height: "100%"
+  height: "100%",
 };
 SitoImage.propTypes = {
   id: PropTypes.string,
@@ -118,8 +128,26 @@ SitoImage.propTypes = {
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
-  sx: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object]),
-  style: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object]),
-  extraProps: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])), PropTypes.func, PropTypes.object])
+  sx: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
+  style: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
+  extraProps: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
+    ),
+    PropTypes.func,
+    PropTypes.object,
+  ]),
 };
 export default SitoImage;
