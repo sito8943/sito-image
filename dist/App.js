@@ -10,47 +10,51 @@ const SitoImage = forwardRef((a, b) => {
       src: e,
       errorComponent: f,
       loadingComponent: g,
-      alt: h,
-      sx: i,
-      id: j,
-      name: k,
-      style: l,
+      onLoad: h,
+      onError: i,
+      alt: j,
+      sx: k,
+      id: l,
+      name: m,
+      style: n,
     } = a,
-    m = (a) => 0 <= a.indexOf("%"),
-    n = (a) => (m(a) ? "100%" : a),
-    o = css({
-      width: i.width ? i.width : "100%",
-      height: i.width ? i.width : "100%",
+    o = (a) => 0 <= a.indexOf("%"),
+    p = (a) => (o(a) ? "100%" : a),
+    q = css({
+      width: k.width ? k.width : "100%",
+      height: k.width ? k.width : "100%",
       img: {
-        filter: i.filter,
-        borderRadius: i.borderRadius,
-        objectFit: i.objectFit,
-        objectPosition: i.objectPosition,
-        ...i,
-        width: `${n(i.width ? i.width : "100%")}`,
-        height: `${n(i.height ? i.height : "100%")}`,
+        filter: k.filter,
+        borderRadius: k.borderRadius,
+        objectFit: k.objectFit,
+        objectPosition: k.objectPosition,
+        ...k,
+        width: `${p(k.width ? k.width : "100%")}`,
+        height: `${p(k.height ? k.height : "100%")}`,
         opacity: 0,
         transition: "opacity 200ms ease",
       },
     });
   return _jsx("div", {
     ref: b,
-    id: j,
-    name: k,
-    style: l,
-    className: o,
+    id: l,
+    name: m,
+    style: n,
+    className: q,
     children: _jsxs("div", {
       className: css({ position: "relative", width: "100%", height: "100%" }),
       children: [
         _jsx("img", {
-          className: o,
+          className: q,
           src: e,
-          alt: h,
+          alt: j,
           loading: "lazy",
           onLoad: (a) => {
-            d(0), (a.target.style.opacity = 1);
+            d(0), (a.target.style.opacity = 1), h(a);
           },
-          onError: () => d(-1),
+          onError: (a) => {
+            d(-1), i(a);
+          },
         }),
         _jsxs("div", {
           className: css({
@@ -58,8 +62,8 @@ const SitoImage = forwardRef((a, b) => {
             position: "absolute",
             top: 0,
             left: 0,
-            width: `${n(i.width ? i.width : "100%")}`,
-            height: `${n(i.height ? i.height : "100%")}`,
+            width: `${p(k.width ? k.width : "100%")}`,
+            height: `${p(k.height ? k.height : "100%")}`,
             transition: "all 500ms ease",
             opacity: 1 === c ? 1 : 0,
           }),
@@ -68,8 +72,8 @@ const SitoImage = forwardRef((a, b) => {
               ? g
               : _jsx("div", {
                   className: `shimmer ${css({
-                    width: `${n(i.width ? i.width : "100%")}`,
-                    height: `${n(i.height ? i.height : "100%")}`,
+                    width: `${p(k.width ? k.width : "100%")}`,
+                    height: `${p(k.height ? k.height : "100%")}`,
                   })}`,
                 }),
             -1 === c && f,
@@ -89,6 +93,8 @@ const SitoImage = forwardRef((a, b) => {
   sx: {},
   style: {},
   extraProps: {},
+  onLoad: () => {},
+  onError: () => {},
 }),
   (SitoImage.propTypes = {
     id: PropTypes.string,
@@ -118,5 +124,7 @@ const SitoImage = forwardRef((a, b) => {
       PropTypes.func,
       PropTypes.object,
     ]),
+    onLoad: PropTypes.func,
+    onError: PropTypes.func,
   });
 export default SitoImage;
