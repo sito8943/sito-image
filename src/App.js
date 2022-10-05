@@ -12,8 +12,18 @@ import "./style.css";
 const SitoImage = forwardRef((props, ref) => {
   const [loading, setLoading] = useState(1);
 
-  const { src, errorComponent, loadingComponent, alt, sx, id, name, style } =
-    props;
+  const {
+    src,
+    errorComponent,
+    loadingComponent,
+    onLoad,
+    onError,
+    alt,
+    sx,
+    id,
+    name,
+    style,
+  } = props;
 
   const isPercent = (dimension) => dimension.indexOf("%") >= 0;
 
@@ -51,8 +61,12 @@ const SitoImage = forwardRef((props, ref) => {
           onLoad={(e) => {
             setLoading(0);
             e.target.style.opacity = 1;
+            onLoad(e);
           }}
-          onError={() => setLoading(-1)}
+          onError={(e) => {
+            setLoading(-1);
+            onError(e);
+          }}
         />
         <div
           className={css({
@@ -95,6 +109,8 @@ SitoImage.defaultProps = {
   sx: {},
   style: {},
   extraProps: {},
+  onLoad: () => {},
+  onError: () => {},
 };
 
 SitoImage.propTypes = {
@@ -128,6 +144,8 @@ SitoImage.propTypes = {
     PropTypes.func,
     PropTypes.object,
   ]),
+  onLoad: PropTypes.func,
+  onError: PropTypes.func,
 };
 
 export default SitoImage;
