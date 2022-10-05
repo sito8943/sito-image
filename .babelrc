@@ -6,5 +6,11 @@
         "runtime": "automatic"
       }
     ]
-  ]
+  ],
+  "comments": false,
+  "env": {
+    "minify": {
+      "presets": ["@babel/preset-react", ["babel-preset-minify"]]
+    }
+  }
 }
