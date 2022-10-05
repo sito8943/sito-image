@@ -2,6 +2,8 @@ import { forwardRef, useState } from "react";
 import { css } from "@emotion/css";
 import PropTypes from "prop-types";
 import "./style.css";
+import { jsx as _jsx } from "react/jsx-runtime";
+import { jsxs as _jsxs } from "react/jsx-runtime";
 const SitoImage = forwardRef((a, b) => {
   const [c, d] = useState(1),
     {
@@ -13,73 +15,74 @@ const SitoImage = forwardRef((a, b) => {
       id: j,
       name: k,
       style: l,
-      width: m,
-      height: n,
     } = a,
-    o = (a) => 0 <= a.indexOf("%"),
-    p = (a) => (o(a) ? "100%" : a),
-    q = css({
-      width: i.width ? i.width : m,
-      height: i.width ? i.width : m,
+    m = (a) => 0 <= a.indexOf("%"),
+    n = (a) => (m(a) ? "100%" : a),
+    o = css({
+      width: i.width ? i.width : "100%",
+      height: i.width ? i.width : "100%",
       img: {
         filter: i.filter,
         borderRadius: i.borderRadius,
         objectFit: i.objectFit,
         objectPosition: i.objectPosition,
         ...i,
-        width: `${p(i.width ? i.width : m)}`,
-        height: `${p(i.height ? i.height : n)}`,
+        width: `${n(i.width ? i.width : "100%")}`,
+        height: `${n(i.height ? i.height : "100%")}`,
         opacity: 0,
         transition: "opacity 200ms ease",
       },
     });
-  return React.createElement(
-    "div",
-    { ref: b, id: j, name: k, style: l, className: q },
-    React.createElement(
-      "div",
-      { className: { position: "relative", width: "100%", height: "100%" } },
-      React.createElement("img", {
-        className: q,
-        src: e,
-        alt: h,
-        loading: "lazy",
-        onLoad: (a) => {
-          d(0), (a.target.style.opacity = 1);
-        },
-        onError: () => d(-1),
-      })
-    ),
-    React.createElement(
-      "div",
-      {
+  return _jsxs("div", {
+    ref: b,
+    id: j,
+    name: k,
+    style: l,
+    className: o,
+    children: [
+      _jsx("div", {
+        className: { position: "relative", width: "100%", height: "100%" },
+        children: _jsx("img", {
+          className: o,
+          src: e,
+          alt: h,
+          loading: "lazy",
+          onLoad: (a) => {
+            d(0), (a.target.style.opacity = 1);
+          },
+          onError: () => d(-1),
+        }),
+      }),
+      _jsxs("div", {
         className: css({
           zIndex: 1 === c ? 1 : -1,
           position: "relative",
           top: 0,
           left: 0,
-          width: `${p(i.width ? i.width : m)}`,
-          height: `${p(i.height ? i.height : n)}`,
+          width: `${n(i.width ? i.width : "100%")}`,
+          height: `${n(i.height ? i.height : "100%")}`,
           opacity: 1 === c ? 1 : 0,
         }),
-      },
-      g
-        ? g
-        : React.createElement("div", {
-            className: `shimmer ${css({
-              zIndex: 1 === c ? 1 : -1,
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: `${p(i.width ? i.width : m)}`,
-              height: `${p(i.height ? i.height : n)}`,
-              transition: "all 500ms ease",
-              opacity: 1 === c ? 1 : 0,
-            })}`,
-          }),
-      -1 === c && f
-    )
-  );
+        children: [
+          g
+            ? g
+            : _jsx("div", {
+                className: `shimmer ${css({
+                  zIndex: 1 === c ? 1 : -1,
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: `${n(i.width ? i.width : "100%")}`,
+                  height: `${n(i.height ? i.height : "100%")}`,
+                  transition: "all 500ms ease",
+                  opacity: 1 === c ? 1 : 0,
+                })}`,
+              }),
+          -1 === c && f,
+        ],
+      }),
+    ],
+  });
 });
 (SitoImage.defaultProps = {
   id: "",
@@ -91,8 +94,6 @@ const SitoImage = forwardRef((a, b) => {
   sx: {},
   style: {},
   extraProps: {},
-  width: "100%",
-  height: "100%",
 }),
   (SitoImage.propTypes = {
     id: PropTypes.string,
@@ -101,8 +102,6 @@ const SitoImage = forwardRef((a, b) => {
     src: PropTypes.string.isRequired,
     errorComponent: PropTypes.node,
     loadingComponent: PropTypes.node,
-    width: PropTypes.number,
-    height: PropTypes.number,
     sx: PropTypes.oneOfType([
       PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.func, PropTypes.object, PropTypes.bool])
