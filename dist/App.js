@@ -41,7 +41,7 @@ const SitoImage = forwardRef((a, b) => {
     className: o,
     children: [
       _jsx("div", {
-        className: { position: "relative", width: "100%", height: "100%" },
+        className: css({ position: "relative", width: "100%", height: "100%" }),
         children: _jsx("img", {
           className: o,
           src: e,
