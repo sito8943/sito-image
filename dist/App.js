@@ -33,16 +33,16 @@ const SitoImage = forwardRef((a, b) => {
         transition: "opacity 200ms ease",
       },
     });
-  return _jsxs("div", {
+  return _jsx("div", {
     ref: b,
     id: j,
     name: k,
     style: l,
     className: o,
-    children: [
-      _jsx("div", {
-        className: css({ position: "relative", width: "100%", height: "100%" }),
-        children: _jsx("img", {
+    children: _jsxs("div", {
+      className: css({ position: "relative", width: "100%", height: "100%" }),
+      children: [
+        _jsx("img", {
           className: o,
           src: e,
           alt: h,
@@ -52,36 +52,31 @@ const SitoImage = forwardRef((a, b) => {
           },
           onError: () => d(-1),
         }),
-      }),
-      _jsxs("div", {
-        className: css({
-          zIndex: 1 === c ? 1 : -1,
-          position: "relative",
-          top: 0,
-          left: 0,
-          width: `${n(i.width ? i.width : "100%")}`,
-          height: `${n(i.height ? i.height : "100%")}`,
-          opacity: 1 === c ? 1 : 0,
+        _jsxs("div", {
+          className: css({
+            zIndex: 1 === c ? 1 : -1,
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: `${n(i.width ? i.width : "100%")}`,
+            height: `${n(i.height ? i.height : "100%")}`,
+            transition: "all 500ms ease",
+            opacity: 1 === c ? 1 : 0,
+          }),
+          children: [
+            g
+              ? g
+              : _jsx("div", {
+                  className: `shimmer ${css({
+                    width: `${n(i.width ? i.width : "100%")}`,
+                    height: `${n(i.height ? i.height : "100%")}`,
+                  })}`,
+                }),
+            -1 === c && f,
+          ],
         }),
-        children: [
-          g
-            ? g
-            : _jsx("div", {
-                className: `shimmer ${css({
-                  zIndex: 1 === c ? 1 : -1,
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: `${n(i.width ? i.width : "100%")}`,
-                  height: `${n(i.height ? i.height : "100%")}`,
-                  transition: "all 500ms ease",
-                  opacity: 1 === c ? 1 : 0,
-                })}`,
-              }),
-          -1 === c && f,
-        ],
-      }),
-    ],
+      ],
+    }),
   });
 });
 (SitoImage.defaultProps = {
