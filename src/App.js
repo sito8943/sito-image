@@ -46,6 +46,7 @@ const SitoImage = forwardRef((props, ref) => {
       opacity: 0,
       transition: "opacity 200ms ease",
     },
+    ...sx,
   });
 
   return (
