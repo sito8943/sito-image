@@ -79,6 +79,12 @@ const SitoImage = forwardRef((props, ref) => {
             height: `${parseImageDimension(sx.height ? sx.height : "100%")}`,
             transition: "all 500ms ease",
             opacity: loading === 1 ? 1 : 0,
+            borderRadius: sx.borderRadius,
+            margin: sx.margin,
+            marginTop: sx.marginTop,
+            marginLeft: sx.marginLeft,
+            marginBottom: sx.marginBottom,
+            marginRight: sx.marginRight,
           })}
         >
           {!loadingComponent ? (
