@@ -23,6 +23,7 @@ const SitoImage = forwardRef((props, ref) => {
     id,
     name,
     style,
+    className,
   } = props;
 
   const isPercent = (dimension) => dimension.indexOf("%") >= 0;
@@ -50,12 +51,18 @@ const SitoImage = forwardRef((props, ref) => {
   });
 
   return (
-    <div ref={ref} id={id} name={name} style={style} className={newSx}>
+    <div
+      ref={ref}
+      id={id}
+      name={name}
+      style={style}
+      className={`${className} ${newSx}`}
+    >
       <div
         className={css({ position: "relative", width: "100%", height: "100%" })}
       >
         <img
-          className={newSx}
+          className={`${className} ${newSx}`}
           src={src}
           alt={alt}
           loading="lazy"
@@ -109,6 +116,7 @@ const SitoImage = forwardRef((props, ref) => {
 SitoImage.defaultProps = {
   id: "",
   name: "",
+  className: "",
   alt: "no-image",
   src: "",
   errorComponent: undefined,
@@ -123,6 +131,7 @@ SitoImage.defaultProps = {
 SitoImage.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
+  className: PropTypes.string,
   alt: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   errorComponent: PropTypes.node,
