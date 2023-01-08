@@ -2,15 +2,15 @@
   "name": "sito-image",
   "description": "Image with shimmer loader",
   "main": "dist/App.js",
-  "version": "0.13.1",
+  "version": "0.13.2",
   "private": false,
   "license": "MIT",
   "author": "SitoNimbus",
   "repository": "https://github.com/SitoNumbis/sito-image.git",
   "dependencies": {
     "@emotion/css": "^11.9.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "react-scripts": "5.0.1"
   },
   "scripts": {
